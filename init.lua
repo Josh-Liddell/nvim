@@ -1,3 +1,5 @@
+print("Hello Joshua, welcome to Nvim")
+
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -6,17 +8,20 @@ vim.opt.ruler = false -- Removes the bottom right hand info
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
-
--- print("Hello Joshua, welcome to Nvim")
+-- For python development
+vim.g.python3_host_prog = '~/.venv/bin/python'
 
 require("config.lazy")
 require("config.keymaps")
 
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 4 --How big a tab is, though settings can also be changed per filetype
 vim.opt.clipboard = "unnamedplus"
-vim.opt.laststatus = 3
+vim.opt.laststatus = 3 --This sets the status bar to global so that it doesn't show in buffers
+
+
+
 -- This is how I could change the colors of certain things
--- vim.cmd [[hi @function.builtin guifg=pink]]
+-- vim.cmd [[hi @function.builtin guifg=blue]]
 
 
 -- Highlight when yanking (copying) text

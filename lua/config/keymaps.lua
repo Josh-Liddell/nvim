@@ -2,6 +2,9 @@ local map = vim.keymap.set
 
 -- coding assist
 map("n", "mm", "iConsole.WriteLine()<esc>bcib", { desc = "Write line" })
+map("n", "<space>f", function() vim.lsp.buf.format() end)
+
+
 
 --navigating files
 map('n', '\\', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
