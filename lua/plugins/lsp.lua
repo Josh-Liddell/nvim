@@ -42,8 +42,8 @@ return {
           local c = vim.lsp.get_client_by_id(args.data.client_id)
           if not c then return end
 
-          -- if vim.bo.filetype == "lua" or vim.bo.filetype == "python" then
-          if vim.bo.filetype == "lua" then
+          if vim.bo.filetype == "lua" or vim.bo.filetype == "python" then
+            -- if vim.bo.filetype == "lua" then
             -- Format the current buffer on save
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = args.buf,
