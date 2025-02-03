@@ -35,6 +35,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-
-
 -- MyCoolFunction = function() print "Hello" end
