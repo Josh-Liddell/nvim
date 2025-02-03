@@ -8,6 +8,7 @@ map("n", "<space>f", function() vim.lsp.buf.format() end)
 
 --navigating files
 map('n', '\\', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+map('n', '<C-\\>', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
 
 
 -- Saving file
@@ -18,7 +19,7 @@ map("n", "<space>x", ":.lua<CR>")
 map("v", "<space>x", ":lua<CR>")
 
 -- Run code
-map("n", "<enter><enter>", ":!/Users/joshua/.venv/bin/python3 %<enter>", { desc = "JOSHUA" })
+map("n", "<enter><enter>", ":!~/.venv/bin/python3 %<enter>", { desc = "JOSHUA" })
 -- shift enter will be run but make it so that it runs it correctly depending on what the type of file is
 
 -- USE nightly version then I can not have these vv
