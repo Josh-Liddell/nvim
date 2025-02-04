@@ -19,7 +19,6 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3 --This sets the status bar to global so that it doesn't show in buffers
 
 
-
 -- This is how I could change the colors of certain things
 -- vim.cmd [[hi @function.builtin guifg=blue]]
 
