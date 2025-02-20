@@ -12,8 +12,10 @@ return {
       on_colors = function(colors)
         -- colors.hint = "#ff0000"
         -- colors.error = colors.blue
-        -- colors.bg = "#101218"
+
         colors.bg = "#131720"
+        colors.bg_sidebar = "#101218"
+        colors.bg_float = "#131720"
         colors.warning = colors.blue
       end
     })
