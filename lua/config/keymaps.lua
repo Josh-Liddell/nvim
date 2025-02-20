@@ -22,7 +22,7 @@ map("v", "<space>x", ":lua<CR>")
 map("n", "<enter><enter>", ":!~/.venv/bin/python3 %<enter>", { desc = "JOSHUA" })
 -- shift enter will be run but make it so that it runs it correctly depending on what the type of file is
 
--- USE nightly version then I can not have these vv
+-- USE nightly version then I dont need these vv
 map('n', 'grn', vim.lsp.buf.rename)
 map('n', 'gra', vim.lsp.buf.code_action)
 map('n', 'grr', vim.lsp.buf.references)

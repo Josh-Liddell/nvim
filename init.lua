@@ -11,6 +11,8 @@ vim.opt.termguicolors = true
 -- For python development
 vim.g.python3_host_prog = '~/.venv/bin/python3'
 
+
+-- Load my plugins and special keymaps
 require("config.lazy")
 require("config.keymaps")
 
@@ -19,15 +21,13 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3 --This sets the status bar to global so that it doesn't show in buffers
 
 
+-- COLORS
+
 -- This is how I could change the colors of certain things
 -- vim.cmd [[hi @function.builtin guifg=blue]]
+vim.cmd [[colorscheme tokyonight]]
 
--- vim.cmd([[
---     :hi      NvimTreeExecFile    guifg=#ffa0a0
---     :hi      NvimTreeSpecialFile guifg=#ff80ff gui=underline
---     :hi      NvimTreeSymlink     guifg=Yellow  gui=italic
---     :hi link NvimTreeImageFile   Title
--- ]])
+
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
