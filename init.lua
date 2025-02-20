@@ -22,10 +22,32 @@ vim.opt.laststatus = 3 --This sets the status bar to global so that it doesn't s
 
 
 -- COLORS
+-- Do :highlight to see the current applied highlights
 
--- This is how I could change the colors of certain things
--- vim.cmd [[hi @function.builtin guifg=blue]]
+-- Set the colorscheme to my colorscheme plugin
 vim.cmd [[colorscheme tokyonight]]
+
+
+-- Customze the syntax highlighting with the help of Tree-sitter
+
+-- vim.cmd [[hi @function.builtin guifg=pink]]
+
+-- vim.cmd [[hi Conditional guifg=red]] -- Customize to the blue of your choice
+-- -- Override Tree-sitter highlighting with cool shades of blue
+-- vim.cmd [[hi @keyword guifg=red]] -- Keywords (e.g., def, if, else)
+-- vim.cmd [[hi @function guifg=#5fa0d1]]         -- Functions
+-- vim.cmd [[hi @function.builtin guifg=#4f9dc9]] -- Built-in functions (e.g., print)
+-- vim.cmd [[hi @variable guifg=#1e4f82]] -- Variables
+-- vim.cmd [[hi @variable.builtin guifg=#4a8e9b]] -- Built-in variables (e.g., True, None)
+-- vim.cmd [[hi @class guifg=#3a7ca3]]            -- Classes
+-- vim.cmd [[hi @method guifg=#4188b7]]           -- Methods
+-- vim.cmd [[hi @string guifg=#75a7b7]]           -- Strings
+-- vim.cmd [[hi @comment guifg=#8bb5d5]] -- Comments
+-- vim.cmd [[hi @number guifg=#4a90e2]]           -- Numbers
+-- vim.cmd [[hi @operator guifg=#5390b8]]         -- Operators (+, -, *, /)
+-- vim.cmd [[hi @type guifg=#5c87c1]]             -- Types (e.g., int, str)
+-- vim.cmd [[hi @constructor guifg=#4e9bb5]]      -- Constructors
+-- vim.cmd [[hi @label guifg=#5d99c6]]            -- Labels (e.g., in switch statements)
 
 
 
