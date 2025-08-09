@@ -15,6 +15,9 @@ vim.opt.fillchars = { eob = ' ' } -- Gets rid of the ~ end of file chars
 vim.o.cursorline = true           -- Coloring the line number but not entire line
 vim.o.cursorlineopt = 'number'
 vim.o.showmode = false            -- assumes the status line will show the mode
+vim.o.undofile = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 -- vim.o.statuscolumn = "%s%C%3l\ ▍"
 -- vim.o.signcolumn = 'yes'
 vim.schedule(function()
@@ -22,10 +25,11 @@ vim.schedule(function()
 end)
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<leader>e', ':Neotree<cr>', { desc = 'Open file explorer' })
+vim.keymap.set('n', '<leader>e', function() vim.cmd("Neotree") end, { desc = 'Open file explorer' })
+vim.keymap.set('n', '<leader>r', function() vim.cmd("Neotree toggle") end, { desc = 'Toggle file explorer' })
 vim.keymap.set("n", "<leader>d", function()
   vim.diagnostic.open_float(0, { scope = "line" })
-end)
+end, { desc = 'View diagnostic message'})
 
 
 -- [[ Basic Autocommands ]] (vim command or lua function executed when an event is triggered)
@@ -61,44 +65,43 @@ require("lazy").setup({
   { import = "plugins" }, -- installs plugins from the files in the plugins folder
 })
 
-require("highlights").setup();
 require("statuscolumn").setup();
 
-vim.diagnostic.config({
-  -- Virtual text options
-  virtual_text = {
-    enabled = true,
-    source = "if_many", -- Show source name when multiple sources exist
-    spacing = 4,        -- Spaces before virtual text
-    prefix = "●",       -- Character to show before text
-    severity = { min = vim.diagnostic.severity.HINT }, -- Minimum severity to show
-  },
-
-  -- Sign column (gutter) configuration
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = "✘",
-      [vim.diagnostic.severity.WARN]  = "▲",
-      [vim.diagnostic.severity.HINT]  = "⚑",
-      [vim.diagnostic.severity.INFO]  = "»",
-    }
-  },
-
-  -- Underline problematic text
-  underline = true,
-
-  -- Update diagnostics in insert mode
-  update_in_insert = true,
-
-  -- Floating window settings for hover diagnostics
-  float = {
-    source = "always",  -- Show diagnostic source
-    border = "rounded", -- Window border style
-    header = "",        -- Custom header text
-    prefix = "",        -- Custom prefix for each diagnostic
-    focusable = false,  -- Whether window can be focused
-  },
-  
-  -- Severity sorting (highest severity first)
+-- Diagnostic Config
+-- See :help vim.diagnostic.Opts
+vim.diagnostic.config {
   severity_sort = true,
-})
+  float = { border = 'rounded', source = 'if_many' },
+  underline = { severity = vim.diagnostic.severity.ERROR },
+  signs = vim.g.have_nerd_font and {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚 ',
+      [vim.diagnostic.severity.WARN] = '󰀪 ',
+      [vim.diagnostic.severity.INFO] = '󰋽 ',
+      [vim.diagnostic.severity.HINT] = '󰌶 ',
+    },
+  } or {},
+  virtual_text = {
+    source = 'if_many',
+    spacing = 2,
+    -- prefix = "●",
+    format = function(diagnostic)
+      local diagnostic_message = {
+        [vim.diagnostic.severity.ERROR] = diagnostic.message,
+        [vim.diagnostic.severity.WARN] = diagnostic.message,
+        [vim.diagnostic.severity.INFO] = diagnostic.message,
+        [vim.diagnostic.severity.HINT] = diagnostic.message,
+      }
+      return diagnostic_message[diagnostic.severity]
+    end,
+  },
+}
+
+-- Extra Icons:
+-- "✘"
+-- "▲"
+-- '󰌶 '
+-- '󰋽 ',
+-- "⚑",
+-- '󰅚 ',
+-- '󰀪 ',

@@ -1,32 +1,7 @@
 local statuscolumn = {};
 
+--- [[ HELPER FUNCTIONS ]]
 
-local gradient_map = {
-  default = "BarsNormal%d",
-
-  ["v"] = "BarsVisual%d",
-  ["V"] = "BarsVisualLine%d",
-  [""] = "BarsVisualBlock%d",
-
-  ["s"] = "BarsVisual%d",
-  ["S"] = "BarsVisualLine%d",
-  [""] = "BarsVisualBlock%d",
-
-  ["i"] = "BarsInsert%d",
-  ["ic"] = "BarsInsert%d",
-  ["ix"] = "BarsInsert%d",
-
-  ["R"] = "BarsInsert%d",
-  ["Rc"] = "BarsInsert%d",
-
-  ["c"] = "BarsCommand%d",
-  ["!"] = "BarsCommand%d",
-};
-
-
-
---- Helper function for applying
---- highlight groups.
 ---@param hl string
 ---@return string
 local function set_hl (hl)
@@ -43,7 +18,10 @@ local function clamp (value, min, max)
   return math.min(math.max(value, min), max);
 end
 
---- Border.
+
+-- [[ STATUSCOLUMN COMPONENTS]]
+
+--- Right Border Component
 ---@param config statuscolumn.border
 ---@return string
 statuscolumn.border = function (_, _, config)
@@ -58,12 +36,8 @@ statuscolumn.border = function (_, _, config)
   end
 
   -- local hl = get(config.hl, vim.v.relnum);
-  local raw_hl = config.hl
-  if type(raw_hl) == "function" then
-    raw_hl = raw_hl()
-  end
-  local hl = get(raw_hl, vim.v.relnum)
-
+  -- by adding the () it extracted the table
+  local hl = get(config.hl, vim.v.relnum);
   local text = get(config.text, vim.v.relnum);
 
   return table.concat({
@@ -73,7 +47,6 @@ statuscolumn.border = function (_, _, config)
 
   ---|fE
 end
-
 
 ---@class statuscolumn.separator
 ---
@@ -89,6 +62,7 @@ end
 ---@field hl? string
 
 
+--- Spacer component
 ---@param config statuscolumn.separator
 statuscolumn.separator = function (_, _, config)
     return table.concat({
@@ -102,7 +76,7 @@ end
 ---@field kind "signs"
 
 
---- The sign column.
+--- The sign column component
 ---@return string
 statuscolumn.signs = function ()
     return "%s";
@@ -121,7 +95,7 @@ end
 ---@field rel_hl? string
 
 
---- Shows the line number.
+--- Shows the line number component
 ---@param buffer integer
 ---@param config statuscolumn.lnum
 ---@return string
@@ -146,8 +120,9 @@ statuscolumn.lnum = function (buffer, _, config)
     -- });
 end
 
---- Optional, configuration table.
---- Add this if you like tinkering.
+
+-- [[ SETTING UP AND ORDERING COMPONENTS]]
+
 statuscolumn.config = {
   -- other components
   {
@@ -168,20 +143,36 @@ statuscolumn.config = {
     text = "▕ ",
     -- hl = "Comment"
     -- hl = "Special"
-    -- It can also be a list of highlight groups........
-    hl = function()
-      local _o = {};
-      ---@type string
-      local mode = vim.api.nvim_get_mode().mode;
-      local USE = gradient_map[mode] or gradient_map.default
 
-      for g = 1, 7 do
-        table.insert(_o, string.format(USE, g));
-      end
-      return _o;
-    end
+    -- All this does is specify a list of gradient colors(hl groups) instead of one color like above
+    -- hl = function()
+    --   local _o = {};
+    --   ---@type string
+    --   local mode = vim.api.nvim_get_mode().mode;
+    --   -- local USE = gradient_map[mode] or gradient_map.default
+    --   local USE = gradient_map.default
+    --
+    --   for g = 1, 7 do
+    --     table.insert(_o, string.format(USE, g));
+    --   end
+    --   return _o;
+    -- end
+
+    hl = {
+      "GradColor1",
+      "GradColor2",
+      "GradColor3",
+      "GradColor4",
+      "GradColor5",
+      "GradColor6",
+      "GradColor7",
+    }
+
+
   },
 };
+
+-- [[ CREATE STATUSCOLUMN STRING (WILL RUN FOR EACH LINE) ]]
 
 --- Function to create the statuscolumn.
 ---@return string
@@ -210,15 +201,42 @@ statuscolumn.render = function ()
     return _statuscolumn;
 end
 
---- Optional, setup function.
+
+-- [[ MAIN SETUP FUNCTION ]]
+
 statuscolumn.setup = function (config)
     if type(config) == "table" then
         statuscolumn.config = vim.tbl_deep_extend("force", statuscolumn.config, config);
     end
 
+    -- vim.cmd [[highlight GradColor1 guifg=#3B82F6]]
+    -- vim.cmd [[highlight GradColor2 guifg=#5A6DFE]]
+    -- vim.cmd [[highlight GradColor3 guifg=#7B58FF]]
+    -- vim.cmd [[highlight GradColor4 guifg=#9B44FF]]
+    -- vim.cmd [[highlight GradColor5 guifg=#B736F0]]
+    -- vim.cmd [[highlight GradColor6 guifg=#D427D1]]
+    -- vim.cmd [[highlight GradColor7 guifg=#F214B5]]
+
+    -- vim.cmd [[highlight GradColor1 guifg=#fc607d]]  -- bright blue
+    -- vim.cmd [[highlight GradColor2 guifg=#ef6288]]
+    -- vim.cmd [[highlight GradColor3 guifg=#e06495]]
+    -- vim.cmd [[highlight GradColor4 guifg=#c667ac]]
+    -- vim.cmd [[highlight GradColor5 guifg=#b869b8]]
+    -- vim.cmd [[highlight GradColor6 guifg=#a56bc8]]
+    -- vim.cmd [[highlight GradColor7 guifg=#8c6ede]]  -- red-orange
+
+    -- Gradients for the line
+    vim.cmd [[highlight GradColor1 guifg=#82aaff]]
+    vim.cmd [[highlight GradColor2 guifg=#82aaff]]
+    vim.cmd [[highlight GradColor3 guifg=#81a8fc]]
+    vim.cmd [[highlight GradColor4 guifg=#7a99e7]]
+    vim.cmd [[highlight GradColor5 guifg=#7188cd]]
+    vim.cmd [[highlight GradColor6 guifg=#6979b8]]
+    vim.cmd [[highlight GradColor7 guifg=#646ea8]]
+
     vim.o.relativenumber = true;
     vim.o.numberwidth = 1;
-    vim.o.statuscolumn = "%!v:lua.require('statuscolumn').render()";
+    vim.o.statuscolumn = "%!v:lua.require('statuscolumn').render()"; -- Renders for each line
 end
 
 return statuscolumn;

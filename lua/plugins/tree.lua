@@ -9,6 +9,8 @@ return {
   lazy = false, -- neo-tree will lazily load itself
   config = function()
     require("neo-tree").setup({
+
+      -- This was one way that I disabled status column for neotree
       event_handlers = {
         {
           event = "neo_tree_buffer_enter",
@@ -17,28 +19,8 @@ return {
           end,
         },
       },
+
+
     })
   end,
 }
-
--- return {
---   "nvim-tree/nvim-tree.lua",
---   version = "*",
---   lazy = false,
---   dependencies = {
---     "nvim-tree/nvim-web-devicons",
---   },
---   -- enabled = false,
---   config = function()
---     require("nvim-tree").setup {
---       renderer = {
---         highlight_git = true, -- Enables git highlights
---         -- icons = {
---         --   show = {
---         --     git = false, -- Disable git icons
---         --   },
---         -- },
---       },
---     }
---   end,
--- }
