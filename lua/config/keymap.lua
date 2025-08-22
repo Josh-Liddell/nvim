@@ -1,7 +1,14 @@
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<leader>e', function() vim.cmd("Neotree") end, { desc = 'Open file explorer' })
-vim.keymap.set('n', '<leader>r', function() vim.cmd("Neotree toggle") end, { desc = 'Toggle file explorer' })
+
+vim.keymap.set('n', '<leader>e', function()
+  Snacks.explorer.open()
+end, { desc = 'Open file explorer' })
+
+-- vim.keymap.set('n', '<leader>e', function()
+--   Snacks.explorer.reveal()
+-- end, { desc = 'Open file explorer' })
+
 vim.keymap.set("n", "<leader>d", function()
   vim.diagnostic.open_float(0, { scope = "line" })
 end, { desc = 'View diagnostic message'})

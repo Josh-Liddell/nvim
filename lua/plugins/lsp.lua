@@ -1,17 +1,17 @@
 return {
   -- Using mason helps manage external dependencies from within config
-  {
-    "mason-org/mason.nvim",
-    opts = {
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗"
-        }
-      }
-    }
-  },
+  -- {
+  --   "mason-org/mason.nvim",
+  --   opts = {
+  --     ui = {
+  --       icons = {
+  --         package_installed = "✓",
+  --         package_pending = "➜",
+  --         package_uninstalled = "✗"
+  --       }
+  --     }
+  --   }
+  -- },
 
   -- Needed for rust analyzer usage and coldelldb(not set up yet)
   {

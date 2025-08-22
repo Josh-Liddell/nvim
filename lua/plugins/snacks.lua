@@ -144,6 +144,11 @@ return {
         { title = "Hey Josh! Let's do some coding!", align = "center", padding = 3 },
         { section = "startup" },
       },
-    }
+    },
+    explorer = {
+      -- your explorer configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
   }
 }

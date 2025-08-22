@@ -40,7 +40,7 @@ vim.opt.splitbelow = true
 vim.opt.undofile = true
 
 -- Set the default border for all floating windows
--- vim.opt.winborder = 'rounded'
+vim.opt.winborder = 'rounded'
 
 
 -- Other
