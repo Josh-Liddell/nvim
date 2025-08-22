@@ -236,7 +236,7 @@ statuscolumn.setup = function (config)
 
     vim.o.relativenumber = true;
     vim.o.numberwidth = 1;
-    vim.o.statuscolumn = "%!v:lua.require('statuscolumn').render()"; -- Renders for each line
+    vim.o.statuscolumn = "%!v:lua.require('config.statuscolumn').render()"; -- Renders for each line
 end
 
 return statuscolumn;

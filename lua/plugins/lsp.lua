@@ -3,6 +3,10 @@ return {
   {
     'williamboman/mason.nvim',
     opts = {    
+      -- ensure_installed = {
+      --   "pyright",
+      --   "rust-analyzer",
+      -- },
       ui = {
         icons = {
             package_installed = "",
@@ -47,5 +51,14 @@ return {
   --       sources = { {name = "crates"} }
   --     })
   --   end
+  -- },
+
+
+
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   config = function()
+  --
+  --   end,
   -- },
 }
