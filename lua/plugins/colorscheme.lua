@@ -43,13 +43,6 @@ return {
 
     vim.cmd.colorscheme("tokyonight") -- apply the color scheme
 
-    -- Setting plugins to ignore the colorscheme background
-    -- vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE' })
-    -- vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NONE' })
-    -- vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = 'NONE' })
-    -- vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', { bg = 'NONE' })
-    -- vim.api.nvim_set_hl(0, 'NeoTreeEndOfBuffer', { bg = 'NONE' })
-
   end
 }
 

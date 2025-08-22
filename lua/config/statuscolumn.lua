@@ -239,4 +239,5 @@ statuscolumn.setup = function (config)
     vim.o.statuscolumn = "%!v:lua.require('config.statuscolumn').render()"; -- Renders for each line
 end
 
+statuscolumn.setup();
 return statuscolumn;

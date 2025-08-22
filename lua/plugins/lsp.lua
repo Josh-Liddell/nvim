@@ -1,24 +1,16 @@
 return {
-  -- plugin to install and manage LSP servers (rust analyzer), debuggers and linters. and a plugin to complement it
+  -- Using mason helps manage external dependencies from within config
   {
-    'williamboman/mason.nvim',
-    opts = {    
-      -- ensure_installed = {
-      --   "pyright",
-      --   "rust-analyzer",
-      -- },
+    "mason-org/mason.nvim",
+    opts = {
       ui = {
         icons = {
-            package_installed = "",
-            package_pending = "",
-            package_uninstalled = "",
-        },
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗"
+        }
       }
     }
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    opts = {}
   },
 
   -- Needed for rust analyzer usage and coldelldb(not set up yet)
@@ -52,7 +44,6 @@ return {
   --     })
   --   end
   -- },
-
 
 
   -- {

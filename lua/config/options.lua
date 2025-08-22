@@ -5,7 +5,7 @@
 vim.opt.number = true
 
 -- Keep signcolumn on by default
--- vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Cursorline
 vim.opt.cursorline = true
@@ -40,7 +40,7 @@ vim.opt.splitbelow = true
 vim.opt.undofile = true
 
 -- Set the default border for all floating windows
-vim.opt.winborder = 'rounded'
+-- vim.opt.winborder = 'rounded'
 
 
 -- Other
