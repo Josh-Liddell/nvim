@@ -2,13 +2,15 @@
 --------------------------------------------------------------------------------
 -- See https://gpanders.com/blog/whats-new-in-neovim-0-11/ for a nice overview
 -- of how the lsp setup works in neovim 0.11+.
+-- Use :checkhealth lsp to view LSP related diagnostics and to view all of your configured LSP servers.
 
 vim.lsp.enable({
   'lua_ls',
-  'pyright'
+  'pyright',
+  'rust-analyzer',
 })
 
--- Diagnostics
+-- Diagnostics config
 vim.diagnostic.config({
     virtual_lines = {
       current_line = true

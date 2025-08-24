@@ -42,14 +42,20 @@ vim.opt.undofile = true
 -- Set the default border for all floating windows
 vim.opt.winborder = 'rounded'
 
+-- Cursor
+vim.opt.guicursor = {
+  "n-v-sm:block",                                -- block in normal/visual/select
+  "i-ci-c:ver25-blinkwait700-blinkon400-blinkoff250", -- blinking line in insert & command
+  "r-cr-o:hor20",                                -- underline in replace modes
+}
 
 -- Other
-vim.opt.termguicolors = true        -- optionally enable 24-bit colour
+vim.opt.termguicolors = true        -- Optionally enable 24-bit colour
 vim.opt.scrolloff = 10              -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.confirm = true              -- Adds dialog to fix things
 vim.opt.ruler = false               -- Removes the bottom right hand info
-vim.opt.laststatus = 3              --This sets the status bar to global so that it doesn't show in buffers
-vim.opt.fillchars = { eob = ' ' } -- Gets rid of the ~ end of file chars
+vim.opt.laststatus = 3              -- This sets the status bar to global so that it doesn't show in buffers
+vim.opt.fillchars = { eob = ' ' }   -- Gets rid of the ~ end of file chars
 vim.opt.showmode = false            -- assumes the status line will show the mode
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus' -- Helps with startup time to wait until nvim initializes
