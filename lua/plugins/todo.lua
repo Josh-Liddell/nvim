@@ -7,6 +7,7 @@
 
 return {
   "folke/todo-comments.nvim",
+  enabled = true,
   event = 'VimEnter',
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
@@ -15,4 +16,3 @@ return {
     -- refer to the configuration section below
   }
 }
-

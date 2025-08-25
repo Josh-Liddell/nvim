@@ -49,8 +49,12 @@ vim.opt.guicursor = {
   "r-cr-o:hor20",                                -- underline in replace modes
 }
 
+-- Colorscheme
+vim.opt.termguicolors = true
+-- vim.cmd("colorscheme joshua_colorscheme")
+-- vim.cmd.colorscheme("tokyonight") -- apply the color scheme
+
 -- Other
-vim.opt.termguicolors = true        -- Optionally enable 24-bit colour
 vim.opt.scrolloff = 10              -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.confirm = true              -- Adds dialog to fix things
 vim.opt.ruler = false               -- Removes the bottom right hand info
