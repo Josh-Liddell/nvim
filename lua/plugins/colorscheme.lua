@@ -1,5 +1,6 @@
 return {
   "folke/tokyonight.nvim",
+  -- enabled = false,
   lazy = false,
   priority = 1000,
   config = function()
@@ -21,20 +22,15 @@ return {
         ---------- My Adjustments ----------
 
         highlights["Number"] = { fg = "#fbb2e5" }
-        highlights["String"] = { fg = "#94a9f6" }
+        -- highlights["String"] = { fg = "#94a9f6" }
         highlights["Boolean"] = { fg = "#4ad6ff" }
         highlights["Function"] = { fg = "#6086ff" }
         highlights["Type"] = { fg = "#6086ff" }
         highlights["PreProc"] = { fg = "#746eff" }
         highlights["@variable.parameter"] = { fg = "#ffffff" }
 
-        highlights["@keyword"] = { fg = "#ff7c8b", italic = true }
-        highlights["Statement"] = { fg = "#ff7c8b", italic = true }
-        highlights["@keyword.function"] = { fg = "#ff7c8b", italic = true }
-
 
         highlights["@property"] = { fg = "#566fcf" }
-        -- highlights["@property"] = { fg = "#465aa9" }
         highlights["@variable.member"] = { fg = "#465aa9" }
         highlights["@operator"] = { fg = "#D85987" }
 
@@ -43,6 +39,11 @@ return {
         highlights["@constructor"] = { fg = "#7fa8f6" }
 
         ------------------------------------
+        -- highlights["@keyword"] = { fg = "#ff7c8b", italic = true }
+        -- highlights["Statement"] = { fg = "#ff7c8b", italic = true }
+        -- highlights["@keyword.function"] = { fg = "#ff7c8b", italic = true }
+
+        -- highlights["@property"] = { fg = "#465aa9" }
 
 
         -- Other colors to test out
